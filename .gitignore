@@ -1,0 +1,28 @@
+.DS_Store
+__pycache__/
+.pytest_cache/
+venv/
+.cursor/
+
+.env
+# Any local env / secrets file (keep *.env.example tracked).
+*.env
+!*.env.example
+storage.env
+**/storage.env
+
+# Run directory for the validator-agent execution loop.
+var/run/
+
+# Data directories for the prototype.
+data/results/
+data/traces/
+data/validator_state_*.json
+
+scripts/tests/agent_predictions.json
+scripts/tests/pareto_scores.png
+
+sim_scoring.txt
+# Python virtualenv created by `npm run setup`.
+.venv/
+node_modules/

@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+# Cancel superseded runs on the same ref to save runner minutes.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  unit:
+    name: Unit & integration tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements-dev.txt
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        env:
+          ALMANAC_PYTHON: python
+        run: npm run setup
+
+      - name: Run test suite
+        run: |
+          # The deselected tests are PRE-EXISTING failures — all fail on a
+          # clean checkout. Quarantined so CI green == no new
+          # breakage; fix and remove rather than adding more.
+          #
+          #   Require a Bittensor wallet keyfile (KeyFileError in any no-wallet
+          #   env, including CI runners):
+          #     - test_validator_scoring_step.py (3 cases)
+          npm test -- \
+            --deselect "tests/validator/test_validator_scoring_step.py::test_forecasting_only_scoring_step_scores_resolved_traces" \
+            --deselect "tests/validator/test_validator_scoring_step.py::test_both_enabled_blends_score_vectors" \
+            --deselect "tests/validator/test_validator_scoring_step.py::test_market_score_failure_returns_none_and_falls_back_to_forecasting"

@@ -1,0 +1,20 @@
+[project]
+name = "almanac"
+version = "0.1.0"
+description = "Almanac decentralized agent forecasting and prediction market validator and miner stack"
+requires-python = ">=3.10"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+markers = [
+    "live: exercises real external APIs (run with `pytest --live`; requires credentials)",
+    "provider(provider_id): gateway provider under test (filter with `pytest --provider <id>`)",
+]

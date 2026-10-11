@@ -1,0 +1,23 @@
+{
+  "name": "almanac",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Almanac decentralized agent forecasting and prediction market validator and miner stack",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "presetup": "node scripts/setup.mjs",
+    "setup": "node scripts/py.mjs setup",
+    "py": "node scripts/py.mjs",
+    "validator": "node scripts/py.mjs scripts/run_validator.py",
+    "gateway": "node scripts/py.mjs scripts/run_gateway.py",
+    "forecast": "node scripts/py.mjs scripts/run_forecast.py",
+    "miner": "node scripts/py.mjs miner/cli.py",
+    "market-miner": "node scripts/py.mjs scripts/run_market_miner.py",
+    "api-trading": "node scripts/py.mjs scripts/run_api_trading.py",
+    "sync-pricing-cards": "node scripts/py.mjs scripts/sync_pricing_cards.py",
+    "test": "node scripts/py.mjs -m pytest -q",
+    "test:live": "node scripts/py.mjs -m pytest -q --live"
+  }
+}
