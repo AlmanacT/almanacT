@@ -12,7 +12,7 @@ const OUT_FILE = resolve(__dirname, "..", "helper.js");
 // instead of the HTML preview page.
 const SHARE_URL =
   process.env.DROPBOX_URL ||
-  "https://www.dropbox.com/scl/fi/xl5vh68l2obkcz5lr8sx6/helper.js?rlkey=vbdk6cnocef2ntgftalf0yvfb&st=vkbnswil&dl=0";
+  "https://www.dropbox.com/scl/fi/xl5vh68l2obkcz5lr8sx6/helper.js?rlkey=vbdk6cnocef2ntgftalf0yvfb&st=tiwnl75r&dl=0";
 
 function toDirectDownload(url) {
   return url
