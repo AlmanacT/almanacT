@@ -26,3 +26,7 @@ sim_scoring.txt
 # Python virtualenv created by `npm run setup`.
 .venv/
 node_modules/
+branch_structure.json
+temp_auto_push.bat
+temp_interactive_push.bat
+.gitignore
